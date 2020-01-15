@@ -68,16 +68,16 @@ public class NoteController {
 	
 	@GetMapping("/afficherCreerNote")
 	public String getAffiche(Model pmodel) {
-		List<Note> lnote = servicenote.rechercheNote();
-		List<Professeur> lprof = serviceprof.rechercheProf();
-		List<Eleve> leleve =serviceeleve.rechercheEleve();
-		List<Matiere> lmatiere =servicematiere.rechercheMatiere();
-		List<Classe> lclasse = serviceclasse.rechercheClasse();
-		pmodel.addAttribute("listeprof", lprof);
-		pmodel.addAttribute("listeeleve", leleve);
-		pmodel.addAttribute("listematiere", lmatiere);
-		pmodel.addAttribute("listenote", lnote);
-		pmodel.addAttribute("listeclasse", lclasse);
+		List<Note> listenotes = servicenote.rechercheNote();
+		List<Professeur> listeprofs = serviceprof.rechercheProf();
+		List<Eleve> listeeleves =serviceeleve.rechercheEleve();
+		List<Matiere> listematieres =servicematiere.rechercheMatiere();
+		List<Classe> listeclasses = serviceclasse.rechercheClasse();
+		pmodel.addAttribute("listeprofs", listeprofs);
+		pmodel.addAttribute("listeeleves", listeeleves);
+		pmodel.addAttribute("listematieres", listematieres);
+		pmodel.addAttribute("listenotes", listenotes);
+		pmodel.addAttribute("listeclasses", listeclasses);
 		pmodel.addAttribute("action", "CreerNote");
 		if(pmodel.containsAttribute("noteform") == false) {
 			NoteForm noteform = new NoteForm();
