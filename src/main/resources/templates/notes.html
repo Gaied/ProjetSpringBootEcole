@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headerload :: load">
+<title th:text="'Gestion Des Matières'"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+<table th:unless="${action == 'ModifierNote'}">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Note</th>
+					<th>Date</th>
+					<th>Avancement</th>
+					<th>Avis</th>
+					<th>Professeur</th>
+					<th>Classe</th>
+					<th>Eleve</th>
+					<th>Trimestre</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="note : ${listenotes}">
+					<td><a
+						th:href="@{/afficherModifierNote/{id}(id=${note.id})}"
+						th:text="${note.id}"></a></td>
+					<td th:text="${note.note}" />
+					<td th:text="${note.prof.nom}"/>
+					<td th:text="${note.classe.nom}"/>
+					<td th:text="${note.eleve.nom}"/>
+					<td th:text="${note.trimestre.nom}"/>
+					<td><a th:href="@{/SupprimerNote/{id}(id=${note.id})}"
+						th:text="'Supprimer'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
